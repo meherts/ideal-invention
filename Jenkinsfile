@@ -1,4 +1,4 @@
-node (label: 'on-demand') {
+node(label: 'on-demand') {
     stage('Build') {
         echo 'Building....'
     }
