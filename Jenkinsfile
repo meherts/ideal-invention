@@ -18,12 +18,16 @@ node(label: 'on-demand') {
     }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
-        def buildTag = ${BUILD_TAG}
-        writeJSON file: buildTag +'-params.json', json: ['OS': params.OS, 'Type': params.TYPE]
+        script{
+            def filename = ${BUILD_TAG} + '-params.json';
+            writeJSON file: filename, json: ['OS': params.OS, 'Type': params.TYPE]
+        }
     }
     stage('Archiving JSON File') {
         echo 'Archiving JSON file...'
-        def buildTag = ${BUILD_TAG}
-        archiveArtifacts artifacts: buildTag + '-params.json'
+        script{
+            def filename = ${BUILD_TAG} + '-params.json';
+            archiveArtifacts artifacts: filename
+        }
     }
 }
