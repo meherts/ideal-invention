@@ -18,9 +18,10 @@ node(label: 'on-demand') {
     }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
-
-        def amap = ['OS': params.OS, 'Type': params.Type]
-        writeJSON file: 'params.json', json: amap
+        script{
+            def amap = ['OS': params.OS, 'Type': params.Type]
+            writeJSON file: 'params.json', json: amap
+        }
     }
     stage('Archiving JSON File') {
         echo 'Archiving JSON file...'
