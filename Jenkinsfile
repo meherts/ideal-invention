@@ -10,7 +10,7 @@ node(label: 'on-demand') {
                     ),
                     choice(
                         choices: ['API', 'UI'],
-                        name: 'Type'
+                        name: 'TYPE'
                     )
                 ])
             ])
@@ -18,7 +18,7 @@ node(label: 'on-demand') {
     }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
-        writeJSON file: 'params.json', json: ['OS': params.OS, 'Type': params.Type]
+        writeJSON file: 'params.json', json: ['OS': params.OS, 'Type': params.TYPE]
     }
     stage('Archiving JSON File') {
         echo 'Archiving JSON file...'
