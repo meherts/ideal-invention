@@ -18,8 +18,11 @@ node(label: 'on-demand') {
     }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
-        def isUnix = isUnix();
-        writeJSON file: 'params.json', json: ['OS': params.OS, 'Type': params.TYPE, 'isUnix': isUnix]
+        writeJSON file: 'params.json', json: ['OS': params.OS, 'Type': params.TYPE]
+    }
+    stage('POST JSON File to Automation Agent'){
+        echo 'Posting JSON file to Automation Agent...'
+        //  TODO:
     }
     stage('Archiving JSON File') {
         echo 'Archiving JSON file...'
