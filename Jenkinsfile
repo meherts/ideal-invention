@@ -3,14 +3,16 @@ node(label: 'on-demand') {
         echo 'Setting up parameters...'
         script{
             properties([
-                choice(
-                    choices: ['Win7', 'Win10'],
-                    name: 'OS'
-                ),
-                choice(
-                    choices: ['API', 'UI'],
-                    name: 'Type'
-                )
+                parameters([
+                    choice(
+                        choices: ['Win7', 'Win10'],
+                        name: 'OS'
+                    ),
+                    choice(
+                        choices: ['API', 'UI'],
+                        name: 'Type'
+                    )
+                ])
             ])
         }
     }
