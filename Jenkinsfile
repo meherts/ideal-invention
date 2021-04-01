@@ -20,12 +20,8 @@ node(label: 'on-demand') {
         echo 'Creating JSON file...'
         writeJSON file: '${BUILD_TAG}-params.json', json: ['OS': params.OS, 'Type': params.TYPE]
     }
-    stage('POST JSON File to Automation Agent'){
-        echo 'Posting JSON file to Automation Agent...'
-        //  TODO:
-    }
     stage('Archiving JSON File') {
         echo 'Archiving JSON file...'
-        archiveArtifacts artifacts: 'params.json'
+        archiveArtifacts artifacts: '${BUILD_TAG}-params.json'
     }
 }
