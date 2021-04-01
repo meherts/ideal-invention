@@ -18,7 +18,7 @@ node(label: 'on-demand') {
     }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
-        writeJSON file: 'params.json', json: ['OS': params.OS, 'Type': params.TYPE]
+        writeJSON file: '${BUILD_TAG}-params.json', json: ['OS': params.OS, 'Type': params.TYPE]
     }
     stage('POST JSON File to Automation Agent'){
         echo 'Posting JSON file to Automation Agent...'
