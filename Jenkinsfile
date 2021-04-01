@@ -16,13 +16,14 @@ node(label: 'on-demand') {
             ])
         }
     }
-    stage('Build') {
-        echo 'Building...'
+    stage('Create JSON File') {
+        echo 'Creating JSON file...'
+
+        def amap = ['OS': params.OS, 'Type': params.Type]
+        writeJSON file: 'params.json', json: amap
     }
-    stage('Test') {
-        echo 'Testing...'
-    }
-    stage('Deploy') {
-        echo 'Deploying...'
+    stage('Archiving JSON File') {
+        echo 'Archiving JSON file...'
+        archiveArtifacts artifacts: 'params.json'
     }
 }
