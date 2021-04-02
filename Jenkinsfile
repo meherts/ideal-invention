@@ -17,7 +17,7 @@ node(label: 'on-demand') {
         }
     }
     stage('Create JSON File') {
-        echo 'Creating JSON file...'
+        echo 'Creating JSON file...${BUILD_TAG}'
         writeJSON file: 'params.json', json: ['OS': params.OS, 'Type': params.TYPE]
     }
     stage('Archiving JSON File') {
