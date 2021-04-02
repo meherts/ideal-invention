@@ -1,7 +1,7 @@
 node(label: 'on-demand') {
-    stage('Set up Parameters'){
-        echo 'Setting up parameters...'
-        script{
+    //stage('Set up Parameters'){
+    //    echo 'Setting up parameters...'
+    //    script{
             properties([
                 parameters([
                     choice(
@@ -14,8 +14,8 @@ node(label: 'on-demand') {
                     )
                 ])
             ])
-        }
-    }
+     //   }
+    //}
     stage('Create JSON File') {
         echo 'Creating JSON file...'
         //  requires https://plugins.jenkins.io/pipeline-utility-steps/
