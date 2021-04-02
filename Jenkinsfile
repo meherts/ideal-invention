@@ -18,6 +18,7 @@ node(label: 'on-demand') {
     }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
+        //  requires https://plugins.jenkins.io/pipeline-utility-steps/
         writeJSON file: env.BUILD_TAG + '-params.json', json: ['OS': params.OS, 'Type': params.TYPE]
     }
     stage('Archiving JSON File') {
