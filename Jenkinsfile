@@ -17,11 +17,11 @@ node(label: 'on-demand') {
         }
     }
     stage('Create JSON File') {
-        echo 'Creating JSON file...' + env.BUILD_TAG
-        writeJSON file: 'params.json', json: ['OS': params.OS, 'Type': params.TYPE]
+        echo 'Creating JSON file...'
+        writeJSON file: env.BUILD_TAG + '-params.json', json: ['OS': params.OS, 'Type': params.TYPE]
     }
     stage('Archiving JSON File') {
         echo 'Archiving JSON file...'
-        archiveArtifacts artifacts: 'params.json'
+        archiveArtifacts artifacts: env.BUILD_TAG + '-params.json'
     }
 }
