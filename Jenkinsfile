@@ -1,7 +1,3 @@
-//  set up tools - https://www.jenkins.io/doc/book/pipeline/syntax/#tools
-tools {
-    maven 'Default'
-}
 node(label: 'on-demand') {
     //  set up job parameters
     properties([
@@ -16,35 +12,37 @@ node(label: 'on-demand') {
             )
         ])
     ])
-    stage('Confirm Git Installed'){
+    stage('Confirm Git Installed') {
         echo 'Confirming Git is installed...'
         if (bat(
             script: "git --version",
             returnStatus: true
-        ) == 0){
+        ) == 0) {
             echo 'Git is installed'
         }
-        else{
+        else {
             echo 'Git is not installed'
             //  TODO: Fail job?
         }
     }
-    stage('Confirm Maven Not Installed'){
+    stage('Confirm Maven Not Installed') {
         echo 'Confirming Maven is not installed...'
         if (bat(
             script: "mvn -v",
             returnStatus: true
-        ) != 0){
+        ) != 0) {
             echo 'Maven is not installed'
         }
-        else{
+        else {
             echo 'Maven is installed'
             //  TODO: Fail job?
         }
     }
-    stage('Use Maven Plugin'){
+    stage('Use Maven Plugin') {
         echo 'Using Maven plugin...'
-        withMaven{
+        withMaven(
+            maven: "maven-3.6.3"
+        ) {
             bat('mvn -v')
         }
     }
