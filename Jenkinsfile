@@ -38,6 +38,12 @@ node(label: 'on-demand') {
             //  TODO: Fail job?
         }
     }
+    stage('Use Maven Plugin'){
+        echo 'Using Maven plugin...'
+        withMaven(){
+            bat('mvn -v')
+        }
+    }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
         //  requires https://plugins.jenkins.io/pipeline-utility-steps/
