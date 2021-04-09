@@ -13,6 +13,7 @@ node(label: 'on-demand') {
         ])
     ])
     stage('Confirm Git Installed'){
+        echo 'Confirming Git is installed...'
         if (bat(
             script: "git --version",
             returnStatus: true
@@ -21,7 +22,20 @@ node(label: 'on-demand') {
         }
         else{
             echo 'Git is not installed'
-            //  TODO: Fail job
+            //  TODO: Fail job?
+        }
+    }
+    stage('Confirm Maven Not Installed'){
+        echo 'Confirming Maven is not installed...'
+        if (bat(
+            script: "mvn -v",
+            returnStatus: true
+        ) != 0){
+            echo 'Maven is not installed'
+        }
+        else{
+            echo 'Maven is installed'
+            //  TODO: Fail job?
         }
     }
     stage('Create JSON File') {
