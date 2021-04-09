@@ -38,11 +38,11 @@ node(label: 'on-demand') {
             //  TODO: Fail job?
         }
     }
-    stage('Install Maven') {
-        echo 'Installing Maven...'
+    stage('Use Installed Maven Tool') {
+        echo 'Using installed Maven tool...'
         //  requires https://plugins.jenkins.io/pipeline-maven/
         withMaven(
-            maven: "maven-3.6.3"
+            maven: "maven-3.6.3" //  Manage Jenkins > Global Tool Configuration > Maven
         ) {
             bat('mvn -v')
         }
