@@ -12,6 +12,9 @@ node(label: 'on-demand') {
             )
         ])
     ])
+    stage('Confirm Git Installed'){
+        bat("git --version")
+    }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
         //  requires https://plugins.jenkins.io/pipeline-utility-steps/
