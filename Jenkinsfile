@@ -13,7 +13,16 @@ node(label: 'on-demand') {
         ])
     ])
     stage('Confirm Git Installed'){
-        bat("git --version")
+        if (bat(
+            script: "git --version"
+            returnStatus: true
+        ) == 0){
+            echo 'Git is installed'
+        }
+        else{
+            echo 'Git is not installed'
+            //  TODO: Fail job
+        }
     }
     stage('Create JSON File') {
         echo 'Creating JSON file...'
