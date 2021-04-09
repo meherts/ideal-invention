@@ -40,7 +40,7 @@ node(label: 'on-demand') {
     }
     stage('Use Maven Plugin'){
         echo 'Using Maven plugin...'
-        withMaven(){
+        withMaven{
             bat('mvn -v')
         }
     }
