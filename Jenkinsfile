@@ -39,7 +39,7 @@ node(label: 'on-demand') {
         }
     }
     stage('Install Maven') {
-        echo 'Using Maven plugin...'
+        echo 'Installing Maven...'
         //  requires https://plugins.jenkins.io/pipeline-maven/
         withMaven(
             maven: "maven-3.6.3"
