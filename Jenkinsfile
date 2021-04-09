@@ -38,8 +38,9 @@ node(label: 'on-demand') {
             //  TODO: Fail job?
         }
     }
-    stage('Use Maven Plugin') {
+    stage('Install Maven') {
         echo 'Using Maven plugin...'
+        //  requires https://plugins.jenkins.io/pipeline-maven/
         withMaven(
             maven: "maven-3.6.3"
         ) {
