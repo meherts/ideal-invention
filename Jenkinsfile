@@ -14,7 +14,7 @@ node(label: 'on-demand') {
     ])
     stage('Confirm Git Installed'){
         if (bat(
-            script: "git --version"
+            script: "git --version",
             returnStatus: true
         ) == 0){
             echo 'Git is installed'
