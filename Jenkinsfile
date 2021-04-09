@@ -1,8 +1,8 @@
+//  set up tools - https://www.jenkins.io/doc/book/pipeline/syntax/#tools
+tools {
+    maven 'Default'
+}
 node(label: 'on-demand') {
-    //  set up tools - https://www.jenkins.io/doc/book/pipeline/syntax/#tools
-    tools {
-        maven 'Default'
-    }
     //  set up job parameters
     properties([
         parameters([
